@@ -1,36 +1,36 @@
 import java.awt.*;
 
 /**
- * A triangle that can be manipulated and that draws itself on a canvas.
+ * A square that can be manipulated and that draws itself on a canvas.
  * 
  * @author  Michael Kölling and David J. Barnes
  * @version 1.0  (15 July 2000)
  */
 
-public class Triangle
+public class rectangleTest
 {
-    public int height;
     public int width;
+    public int height;
     public int xPosition;
     public int yPosition;
     public String color;
     public boolean isVisible;
 
     /**
-     * Create a new triangle at default position with default color.
+     * Create a new square at default position with default color.
      */
-    public Triangle()
+    public rectangleTest()
     {
+        width = 30;
         height = 30;
-        width = 40;
-        xPosition = 50;
-        yPosition = 15;
-        color = "green";
+        xPosition = 60;
+        yPosition = 50;
+        color = "red";
         isVisible = false;
     }
 
     /**
-     * Make this triangle visible. If it was already visible, do nothing.
+     * Make this square visible. If it was already visible, do nothing.
      */
     public void makeVisible()
     {
@@ -39,7 +39,7 @@ public class Triangle
     }
 
     /**
-     * Make this triangle invisible. If it was already invisible, do nothing.
+     * Make this square invisible. If it was already invisible, do nothing.
      */
     public void makeInvisible()
     {
@@ -48,7 +48,7 @@ public class Triangle
     }
 
     /**
-     * Move the triangle a few pixels to the right.
+     * Move the square a few pixels to the right.
      */
     public void moveRight()
     {
@@ -56,7 +56,7 @@ public class Triangle
     }
 
     /**
-     * Move the triangle a few pixels to the left.
+     * Move the square a few pixels to the left.
      */
     public void moveLeft()
     {
@@ -64,7 +64,7 @@ public class Triangle
     }
 
     /**
-     * Move the triangle a few pixels up.
+     * Move the square a few pixels up.
      */
     public void moveUp()
     {
@@ -72,7 +72,7 @@ public class Triangle
     }
 
     /**
-     * Move the triangle a few pixels down.
+     * Move the square a few pixels down.
      */
     public void moveDown()
     {
@@ -80,7 +80,7 @@ public class Triangle
     }
 
     /**
-     * Move the triangle horizontally by 'distance' pixels.
+     * Move the square horizontally by 'distance' pixels.
      */
     public void moveHorizontal(int distance)
     {
@@ -90,7 +90,7 @@ public class Triangle
     }
 
     /**
-     * Move the triangle vertically by 'distance' pixels.
+     * Move the square vertically by 'distance' pixels.
      */
     public void moveVertical(int distance)
     {
@@ -100,7 +100,7 @@ public class Triangle
     }
 
     /**
-     * Slowly move the triangle horizontally by 'distance' pixels.
+     * Slowly move the square horizontally by 'distance' pixels.
      */
     public void slowMoveHorizontal(int distance)
     {
@@ -124,7 +124,7 @@ public class Triangle
     }
 
     /**
-     * Slowly move the triangle vertically by 'distance' pixels.
+     * Slowly move the square vertically by 'distance' pixels.
      */
     public void slowMoveVertical(int distance)
     {
@@ -150,14 +150,19 @@ public class Triangle
     /**
      * Change the size to the new size (in pixels). Size must be >= 0.
      */
-    public void changeSize(int newHeight, int newWidth)
+    public void changeWidth(int newWidth)
     {
         erase();
-        height = newHeight;
         width = newWidth;
         draw();
     }
-
+    
+    public void changeHeight(int newHeight)
+    {
+        erase();
+        height = newHeight;
+        draw();
+    }
     /**
      * Change the color. Valid colors are "red", "yellow", "blue", "green",
      * "magenta" and "black".
@@ -169,21 +174,20 @@ public class Triangle
     }
 
     /*
-     * Draw the triangle with current specifications on screen.
+     * Draw the square with current specifications on screen.
      */
     private void draw()
     {
         if(isVisible) {
             Canvas canvas = Canvas.getCanvas();
-            int[] xpoints = { xPosition, xPosition + (width/2), xPosition - (width/2) };
-            int[] ypoints = { yPosition, yPosition + height, yPosition + height };
-            canvas.draw(this, color, new Polygon(xpoints, ypoints, 3));
+            canvas.draw(this, color,
+                    new Rectangle(xPosition, yPosition, width, height));
             canvas.wait(10);
         }
     }
 
     /*
-     * Erase the triangle on screen.
+     * Erase the square on screen.
      */
     private void erase()
     {

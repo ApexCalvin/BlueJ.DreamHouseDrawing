@@ -10,11 +10,11 @@ import java.awt.geom.*;
 
 public class Circle
 {
-    private int diameter;
-    private int xPosition;
-    private int yPosition;
-    private String color;
-    private boolean isVisible;
+    public int diameter;
+    public int xPosition;
+    public int yPosition;
+    public String color;
+    public boolean isVisible;
 
     /**
      * Create a new circle at default position with default color.

@@ -9,7 +9,7 @@ import java.awt.*;
 
 public class Square
 {
-    private int size;
+    public int size;
     private int xPosition;
     private int yPosition;
     private String color;
@@ -173,7 +173,8 @@ public class Square
         if(isVisible) {
             Canvas canvas = Canvas.getCanvas();
             canvas.draw(this, color,
-                    new Rectangle(xPosition, yPosition, size, size));
+                    new Rectangle(xPosition, yPosition, size, size));;
+                    
             canvas.wait(10);
         }
     }
